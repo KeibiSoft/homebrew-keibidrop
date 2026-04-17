@@ -1,10 +1,12 @@
 class Keibidrop < Formula
   desc "End-to-end encrypted peer-to-peer file sharing with FUSE virtual filesystem"
   homepage "https://github.com/KeibiSoft/KeibiDrop"
-  version "0.1.0-beta"
   license "MPL-2.0"
 
-  depends_on "macfuse"
+  # Updated by release automation — do not edit manually
+  version "0.2.0-beta.1"
+
+  depends_on "macfuse" => :recommended
 
   on_macos do
     if Hardware::CPU.arm?
@@ -17,13 +19,9 @@ class Keibidrop < Formula
   end
 
   on_linux do
-    if Hardware::CPU.arm?
-      url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-arm64.tar.gz"
-      sha256 "PLACEHOLDER_LINUX_ARM64_SHA256"
-    else
-      url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-amd64.tar.gz"
-      sha256 "PLACEHOLDER_LINUX_AMD64_SHA256"
-    end
+    url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-amd64.tar.gz"
+    sha256 "PLACEHOLDER_LINUX_AMD64_SHA256"
+    depends_on "libfuse2" => :recommended
   end
 
   def install
@@ -33,15 +31,28 @@ class Keibidrop < Formula
   end
 
   def caveats
-    <<~EOS
-      KeibiDrop requires macFUSE for virtual folder support.
-      If not already installed: brew install macfuse
+    on_macos do
+      <<~EOS
+        KeibiDrop uses macFUSE for virtual folder support (optional).
+        If not already installed: brew install macfuse
 
-      Quick start:
-        keibidrop              # Launch desktop UI
-        kd start               # Start CLI daemon
-        kd show fingerprint    # Get your fingerprint
-    EOS
+        Quick start:
+          keibidrop              # Launch desktop UI
+          kd start               # Start CLI daemon
+          keibidrop-cli          # Interactive REPL
+      EOS
+    end
+    on_linux do
+      <<~EOS
+        KeibiDrop uses FUSE for virtual folder support (optional).
+        If not already installed: sudo apt install libfuse2
+
+        Quick start:
+          keibidrop              # Launch desktop UI
+          kd start               # Start CLI daemon
+          keibidrop-cli          # Interactive REPL
+      EOS
+    end
   end
 
   test do
