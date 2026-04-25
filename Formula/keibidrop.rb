@@ -3,24 +3,23 @@ class Keibidrop < Formula
   homepage "https://github.com/KeibiSoft/KeibiDrop"
   license "MPL-2.0"
 
-  # Updated by release automation — do not edit manually
-  version "0.2.0-beta.1"
+  version "0.1.0"
 
   depends_on "macfuse" => :recommended
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-arm64.tar.gz"
-      sha256 "PLACEHOLDER_ARM64_SHA256"
+      sha256 "0fdd0e6578466f52819b340cd2ca82f31c22dfefa19a6ef101658b151d762870"
     else
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-amd64.tar.gz"
-      sha256 "PLACEHOLDER_AMD64_SHA256"
+      sha256 "0d8b7acce887f9f616ff167a7d73e1b4ac083eb48bbba2ecbc87320e4b739f3c"
     end
   end
 
   on_linux do
     url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-amd64.tar.gz"
-    sha256 "PLACEHOLDER_LINUX_AMD64_SHA256"
+    sha256 "0433046d64efc73ea95249387456cda731dae61061eec694f51defb7bb646c04"
     depends_on "libfuse2" => :recommended
   end
 
