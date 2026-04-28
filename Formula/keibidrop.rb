@@ -5,8 +5,6 @@ class Keibidrop < Formula
 
   version "0.1.1"
 
-  depends_on "macfuse" => :recommended
-
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-arm64.tar.gz"
@@ -20,7 +18,6 @@ class Keibidrop < Formula
   on_linux do
     url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-amd64.tar.gz"
     sha256 "0caf4aa7e20f4ae4076d24570d30b91a0fe1e1d64c7259158808d520c740b892"
-    depends_on "libfuse2" => :recommended
   end
 
   def install
@@ -33,7 +30,7 @@ class Keibidrop < Formula
     on_macos do
       <<~EOS
         KeibiDrop uses macFUSE for virtual folder support (optional).
-        If not already installed: brew install macfuse
+        Download from https://macfuse.github.io/ if not already installed.
 
         Quick start:
           keibidrop              # Launch desktop UI
