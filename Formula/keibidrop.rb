@@ -21,9 +21,19 @@ class Keibidrop < Formula
   end
 
   def install
-    bin.install "keibidrop" if File.exist?("keibidrop")
-    bin.install "keibidrop-cli" if File.exist?("keibidrop-cli")
-    bin.install "kd" if File.exist?("kd")
+    # Tarball extracts into keibidrop-VERSION/ subdirectory
+    subdir = Dir["keibidrop-*"].first
+    if subdir && File.directory?(subdir)
+      Dir.chdir(subdir) do
+        bin.install "keibidrop" if File.exist?("keibidrop")
+        bin.install "keibidrop-cli" if File.exist?("keibidrop-cli")
+        bin.install "kd" if File.exist?("kd")
+      end
+    else
+      bin.install "keibidrop" if File.exist?("keibidrop")
+      bin.install "keibidrop-cli" if File.exist?("keibidrop-cli")
+      bin.install "kd" if File.exist?("kd")
+    end
   end
 
   def caveats
