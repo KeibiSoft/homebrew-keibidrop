@@ -3,21 +3,21 @@ class Keibidrop < Formula
   homepage "https://github.com/KeibiSoft/KeibiDrop"
   license "MPL-2.0"
 
-  version "0.4.6"
+  version "0.4.7"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-arm64.tar.gz"
-      sha256 "95b7a53573a69144c714f6dac856893c52edbbc51df3b1fb9855e355a4b22b12"
+      sha256 "c79acfc618e8fedffa3b1d1b0e145fd1f56390a26c39db074ab10ca683479cb4"
     else
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-amd64.tar.gz"
-      sha256 "b9b37f92bc051f4ab134c3f6c53b660a4fb6acf2f297c10972b77a9ff8b1400b"
+      sha256 "746325b89c2763c3ceefb8ccb602502b86efc20273c8a76d69b692c8c543dc06"
     end
   end
 
   on_linux do
     url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-amd64.tar.gz"
-    sha256 "f8bc9317412158bae20c226c3fc706d3780620aa40d13cfe3a093557ee275f81"
+    sha256 "b1f4a85cc7bc86a6f291cb20ba47f7860234d745621923c56190890240294fa5"
   end
 
   def install
