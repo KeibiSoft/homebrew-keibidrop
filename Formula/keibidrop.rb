@@ -1,23 +1,23 @@
 class Keibidrop < Formula
   desc "End-to-end encrypted peer-to-peer file sharing with FUSE virtual filesystem"
   homepage "https://github.com/KeibiSoft/KeibiDrop"
-  license "MPL-2.0"
+  license "AGPL-3.0-only"
 
-  version "0.4.8"
+  version "0.5.0"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-arm64.tar.gz"
-      sha256 "4c59688a675df98a249897c46eb8c115824c968bc65e743e081b8179a8cdafa0"
+      sha256 "958788f3f4b269ee1198dee0b67995cb03cec3127313c1ab8285942f36a958e8"
     else
       url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-darwin-amd64.tar.gz"
-      sha256 "d7a4368ca6ed03e85fba25b20e5f3ea9f94eccaeabd303aa3fdec756f9275e4b"
+      sha256 "d64f3494b2c1779beda049c2ed412b252b53baa15c560e6965087d2b9f0a70c5"
     end
   end
 
   on_linux do
     url "https://github.com/KeibiSoft/KeibiDrop/releases/download/v#{version}/keibidrop-#{version}-linux-amd64.tar.gz"
-    sha256 "7be17c55b01b8f60d6fa08ea557af095221abae8c961a3a77b1beedecb9c8c29"
+    sha256 "f84f0816996355b1a331b3f1105595ada22d28d3d00605b299d869936968fa87"
   end
 
   def install
